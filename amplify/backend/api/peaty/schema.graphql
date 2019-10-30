@@ -1,0 +1,126 @@
+# scalar Coordinates
+
+type PointGeometry {
+  type: String!
+  # coordinates: Coordinates!
+  coordinates: AWSJSON
+}
+
+type PointProps {
+  id: Int!
+  lat: Float
+  lon: Float
+}
+
+type PointObject {
+  type: String!
+  geometry: PointGeometry
+  properties: PointProps
+}
+
+# type FeatureCollection {
+#   type: String!
+#   features: [PointObject]
+# }
+
+# type Query {
+#   transit_feed: FeatureCollection
+# }
+
+# Services are types of business offered.
+type Service @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  title: String!
+  description: String
+}
+
+# Providers are the businesses.
+type Provider
+  @model
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Managers"]
+        queries: null
+        mutations: [create, update, delete]
+      }
+      {
+        allow: groups
+        groups: ["Employees"]
+        queries: [get, list]
+        mutations: null
+      }
+    ]
+  ) {
+  id: ID!
+  title: String!
+  description: String
+  email: AWSEmail
+  status: String
+  phone: AWSPhone
+  resources: [Resource]
+  consumers: [Consumer]
+  services: [Service]
+  url: AWSURL
+}
+
+# Resources are the shops / locations / branches.
+type Resource @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  provider: String!
+  title: String!
+  description: String
+  status: String
+  point: PointObject
+}
+
+# Schedules are the possible working hours for the Resources.
+type Schedule @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  title: String!
+  description: String
+  status: String
+  datetimes: [AWSDateTime]
+  consumers: [Consumer]
+}
+
+# Consumers are the staff.
+type Consumer @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  content: String!
+  email: AWSEmail
+  phone: AWSPhone
+  providers: [Provider]
+  schedule: [Schedule]
+  url: AWSURL
+}
+
+type Task
+  @model
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Managers"]
+        queries: null
+        mutations: [create, update, delete]
+      }
+      {
+        allow: groups
+        groups: ["Employees"]
+        queries: [get, list]
+        mutations: null
+      }
+    ]
+  ) {
+  id: ID!
+  title: String!
+  description: String
+  status: String
+}
+
+type PrivateNote @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  content: String!
+}

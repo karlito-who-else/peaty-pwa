@@ -1,0 +1,14 @@
+{
+    "trigger": true,
+    "modules": [
+        "captcha-create-challenge"
+    ],
+    "parentResource": "peatypwa1e26d4b1",
+    "functionName": "peatypwa1e26d4b1CreateAuthChallenge",
+    "parentStack": "auth",
+    "triggerEnvs": "[]",
+    "triggerTemplate": "CreateAuthChallenge.json.ejs",
+    "roleName": "peatypwa1e26d4b1CreateAuthChallenge",
+    "skipEdit": true,
+    "resourceName": "peatypwa1e26d4b1CreateAuthChallenge"
+}

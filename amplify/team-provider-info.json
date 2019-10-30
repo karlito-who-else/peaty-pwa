@@ -1,0 +1,33 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-peaty-pwa-dev-133242-authRole",
+            "UnauthRoleArn": "arn:aws:iam::035500483292:role/amplify-peaty-pwa-dev-133242-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::035500483292:role/amplify-peaty-pwa-dev-133242-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-peaty-pwa-dev-133242-deployment",
+            "UnauthRoleName": "amplify-peaty-pwa-dev-133242-unauthRole",
+            "StackName": "amplify-peaty-pwa-dev-133242",
+            "StackId": "arn:aws:cloudformation:eu-west-1:035500483292:stack/amplify-peaty-pwa-dev-133242/c08a3cf0-fb19-11e9-be68-0a07909a05bc"
+        },
+        "categories": {
+            "function": {
+                "peatypwa1e26d4b1DefineAuthChallenge": {},
+                "peatypwa1e26d4b1CreateAuthChallenge": {},
+                "peatypwa1e26d4b1VerifyAuthChallengeResponse": {
+                    "RECAPTCHASECRET": ""
+                },
+                "peatypwa1e26d4b1CustomMessage": {
+                    "REDIRECTURL": "https://peaty.com/account/confirmation",
+                    "EMAILSUBJECT": "Please confirm your account with Peaty",
+                    "EMAILMESSAGE": "Please confirm "
+                }
+            },
+            "auth": {
+                "peatypwa1e26d4b1": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"2268396246599307\",\"client_secret\":\"db2cc941f7efa63b4a145516704df570\"},{\"ProviderName\":\"Google\",\"client_id\":\"474685816269-i8q87qhslbshte7lh9koaohssmp8cbn4.apps.googleusercontent.com\",\"client_secret\":\"9eB1EEWTFrUKNj1d2siWEahV\"},{\"ProviderName\":\"LoginWithAmazon\",\"client_id\":\"amzn1.application-oa2-client.16d5e929d138426991926d6cf7191292\",\"client_secret\":\"cd8ac1682dcd7f9fe9f37da57c43cc1f2d0b9ce33509fc00e6324483f8bd1363\"}]"
+                }
+            }
+        }
+    }
+}

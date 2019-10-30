@@ -1,0 +1,14 @@
+{
+    "trigger": true,
+    "modules": [
+        "captcha-verify"
+    ],
+    "parentResource": "peatypwa1e26d4b1",
+    "functionName": "peatypwa1e26d4b1VerifyAuthChallengeResponse",
+    "parentStack": "auth",
+    "triggerEnvs": "[]",
+    "triggerTemplate": "VerifyAuthChallengeResponse.json.ejs",
+    "roleName": "peatypwa1e26d4b1VerifyAuthChallengeResponse",
+    "skipEdit": true,
+    "resourceName": "peatypwa1e26d4b1VerifyAuthChallengeResponse"
+}

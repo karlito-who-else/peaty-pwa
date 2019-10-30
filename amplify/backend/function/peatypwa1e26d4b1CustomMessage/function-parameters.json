@@ -1,0 +1,14 @@
+{
+    "trigger": true,
+    "modules": [
+        "verification-link"
+    ],
+    "parentResource": "peatypwa1e26d4b1",
+    "functionName": "peatypwa1e26d4b1CustomMessage",
+    "parentStack": "auth",
+    "triggerEnvs": "[{\"key\":\"RESOURCENAME\",\"value\":\"resourceName\"}]",
+    "triggerTemplate": "CustomMessage.json.ejs",
+    "roleName": "peatypwa1e26d4b1CustomMessage",
+    "skipEdit": true,
+    "resourceName": "peatypwa1e26d4b1CustomMessage"
+}
