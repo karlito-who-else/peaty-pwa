@@ -1,0 +1,10 @@
+@import "variables";
+
+//Menu overrides
+$menu-item-color: $text-on-primary;
+$menu-item-hover-color: $text-on-primary !important;
+$menu-item-hover-background-color: $primary;
+$menu-item-active-color: $text-on-secondary;
+$menu-item-active-background-color: $secondary;
+$menu-list-border-left: 1px solid $primary-light;
+$menu-label-color: $text-on-primary;

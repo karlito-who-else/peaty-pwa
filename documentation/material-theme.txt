@@ -1,0 +1,25 @@
+# See https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=7E57C2&secondary.color=757575
+
+#Primary
+#7e57c2
+
+#Primary - light
+#b085f5
+
+#Primary - dark
+#4d2c91
+
+#Text on Primary
+#ffffff
+
+#Secondary
+#757575
+
+#Secondary - light
+#a4a4a4
+
+#Secondary - dark
+#494949
+
+#Text on Secondary
+#ffffff

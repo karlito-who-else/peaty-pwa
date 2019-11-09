@@ -1,0 +1,16 @@
+@import "custom-properties";
+
+html {
+  background-color: var(--body-background);
+}
+
+button {
+  appearance: none;
+  background-color: var(--button-background-color);
+  border: none;
+  color: var(--button-color);
+
+  &:active {
+    background-color: var(--button-click);
+  }
+}

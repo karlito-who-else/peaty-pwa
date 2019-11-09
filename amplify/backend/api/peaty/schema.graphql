@@ -124,3 +124,9 @@ type PrivateNote @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   content: String!
 }
+
+type Todo @model {
+  id: ID!
+  name: String!
+  description: String
+}

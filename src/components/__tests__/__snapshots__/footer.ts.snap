@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<footer
+  className="footer has-background-black has-text-white"
+>
+  <div
+    className="content has-text-centered"
+  >
+    <img
+      alt="Kaldi"
+      src="test-file-stub"
+      style={
+        Object {
+          "height": "10em",
+          "width": "14em",
+        }
+      }
+    />
+  </div>
+  <div
+    className="content has-text-centered has-background-black has-text-white"
+  >
+    <div
+      className="container has-background-black has-text-white"
+    >
+      <div
+        className="columns"
+      >
+        <div
+          className="column is-4"
+        >
+          <section
+            className="menu"
+          >
+            <ul
+              className="menu-list"
+            >
+              <li>
+                <a
+                  className="navbar-item"
+                  href="/"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  className="navbar-item"
+                  href="/about"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  className="navbar-item"
+                  href="/jobs"
+                >
+                  Jobs
+                </a>
+              </li>
+              <li>
+                <a
+                  className="navbar-item"
+                  href="/products"
+                >
+                  Products
+                </a>
+              </li>
+              <li>
+                <a
+                  className="navbar-item"
+                  href="/contact/examples"
+                >
+                  Form Examples
+                </a>
+              </li>
+              <li>
+                <a
+                  className="navbar-item"
+                  href="/admin/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Admin
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <div
+          className="column is-4"
+        >
+          <section>
+            <ul
+              className="menu-list"
+            >
+              <li>
+                <a
+                  className="navbar-item"
+                  href="/blog"
+                >
+                  Latest Stories
+                </a>
+              </li>
+              <li>
+                <a
+                  className="navbar-item"
+                  href="/contact"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <div
+          className="column is-4 social"
+        >
+          <a
+            href="https://facebook.com"
+            title="facebook"
+          >
+            <img
+              alt="Facebook"
+              src="test-file-stub"
+              style={
+                Object {
+                  "height": "1em",
+                  "width": "1em",
+                }
+              }
+            />
+          </a>
+          <a
+            href="https://twitter.com"
+            title="twitter"
+          >
+            <img
+              alt="Twitter"
+              className="fas fa-lg"
+              src="test-file-stub"
+              style={
+                Object {
+                  "height": "1em",
+                  "width": "1em",
+                }
+              }
+            />
+          </a>
+          <a
+            href="https://instagram.com"
+            title="instagram"
+          >
+            <img
+              alt="Instagram"
+              src="test-file-stub"
+              style={
+                Object {
+                  "height": "1em",
+                  "width": "1em",
+                }
+              }
+            />
+          </a>
+          <a
+            href="https://vimeo.com"
+            title="vimeo"
+          >
+            <img
+              alt="Vimeo"
+              src="test-file-stub"
+              style={
+                Object {
+                  "height": "1em",
+                  "width": "1em",
+                }
+              }
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+`;

@@ -1,9 +1,14 @@
+const siteMetadata = require("./config/site-metadata");
+const iconsConfiguration = require("./config/icons");
+
+const icons = iconsConfiguration.map(icon => ({
+  sizes: `${icon.size}x${icon.size}`,
+  src: `/icons/icon-${icon.size}x${icon.size}.${icon.type}`,
+  type: `image/${icon.type}`
+}));
+
 const config = {
-  siteMetadata: {
-    title: "Gatsby + Netlify CMS Starter",
-    description:
-      "This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution."
-  },
+  siteMetadata,
   plugins: [
     {
       resolve: `gatsby-plugin-typescript`,
@@ -22,18 +27,28 @@ const config = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: siteMetadata.title,
+        short_name: siteMetadata.shortTitle,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/img/logo.svg`
+        icon: `src/img/logomark.svg`,
+        icons
       }
     },
     `gatsby-plugin-offline`,
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
+    "gatsby-plugin-styled-components",
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.inline\.svg$/
+        }
+      }
+    },
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: "gatsby-source-filesystem",
@@ -89,14 +104,14 @@ const config = {
     {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`
+        modulePath: `${__dirname}/src/cms/cms.ts`
       }
     },
     {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
-        purgeOnly: ["/all.sass"] // applies purging only on the bulma css file
+        purgeOnly: ["/all.scss"] // applies purging only on the bulma css file
       }
     }, // must be after other CSS plugins
     "gatsby-plugin-netlify" // make sure to keep it last in the array
