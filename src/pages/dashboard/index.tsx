@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { createStyles, makeStyles, Theme, Paper } from "@material-ui/core";
+import { Paper, Theme } from "@material-ui/core";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
 
 import Layout from "../../components/Layout";
 import withLocation from "../../components/withLocation";
@@ -11,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: "grid",
       gap: `${theme.spacing(2)}px`,
+      gridArea: "content",
       gridAutoRows: `minmax(100px, auto)`,
       gridTemplateColumns: `repeat(3, 1fr)`,
       padding: theme.spacing(2)

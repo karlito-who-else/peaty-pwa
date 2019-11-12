@@ -3,8 +3,6 @@ import React, { ReactElement } from "react";
 
 import {
   AppBar,
-  createStyles,
-  CssBaseline,
   Divider,
   Drawer,
   Hidden,
@@ -13,19 +11,18 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  makeStyles,
   Theme,
   Toolbar,
-  Typography,
-  useTheme
+  Typography
 } from "@material-ui/core";
+import { createStyles, makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   Inbox as InboxIcon,
   Mail as MailIcon,
   Menu as MenuIcon
 } from "@material-ui/icons";
 
-import BottomNavigationDesktop from "../BottomNavigationDesktop";
+import Footer from "../Footer";
 import BottomNavigationMobile from "../BottomNavigationMobile";
 import useSiteMetadata from "../SiteMetadata";
 
@@ -74,26 +71,11 @@ const useStyles = makeStyles((theme: Theme) =>
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth
-    },
-    content: {
-      // [theme.breakpoints.up("sm")]: {
-      //   width: `calc(100% - ${drawerWidth}px)`,
-      //   marginLeft: drawerWidth
-      // },
-      gridArea: "content"
-      // padding: theme.spacing(3)
-    },
-    bottomNavigation: {
-      gridArea: "footer"
-      // [theme.breakpoints.up("sm")]: {
-      //   width: `calc(100% - ${drawerWidth}px)`,
-      //   marginLeft: drawerWidth
-      // }
     }
   })
 );
 
-export const ResponsiveDrawer = ({
+export const DrawerResponsive = ({
   children
 }: InferProps<typeof DrawerMain.propTypes>): ReactElement => {
   const classes = useStyles();
@@ -107,7 +89,7 @@ export const ResponsiveDrawer = ({
   };
 
   const drawer = (
-    <div>
+    <React.Fragment>
       <div className={classes.toolbar} />
       <Divider />
       <List>
@@ -131,12 +113,11 @@ export const ResponsiveDrawer = ({
           </ListItem>
         ))}
       </List>
-    </div>
+    </React.Fragment>
   );
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton
@@ -183,25 +164,22 @@ export const ResponsiveDrawer = ({
           </Drawer>
         </Hidden>
       </nav>
-      <div className={classes.content}>
-        {/* <div className={classes.toolbar} /> */}
-        {children}
-      </div>
-      <footer className={classes.bottomNavigation}>
-        <Hidden smDown>
-          <BottomNavigationDesktop />
-        </Hidden>
 
-        <Hidden mdUp>
-          <BottomNavigationMobile />
-        </Hidden>
-      </footer>
+      {children}
+
+      <Hidden smDown>
+        <Footer />
+      </Hidden>
+
+      <Hidden mdUp>
+        <BottomNavigationMobile />
+      </Hidden>
     </div>
   );
 };
 
-ResponsiveDrawer.propTypes = {
+DrawerResponsive.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-export default ResponsiveDrawer;
+export default DrawerResponsive;

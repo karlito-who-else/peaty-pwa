@@ -1,11 +1,8 @@
 import PropTypes, { InferProps } from "prop-types";
 import React, { ReactElement } from "react";
 
-import {
-  createMuiTheme,
-  ThemeProvider,
-  useMediaQuery
-} from "@material-ui/core";
+import { useMediaQuery } from "@material-ui/core";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { purple, red } from "@material-ui/core/colors";
 
 const primary = red[500]; // #F44336

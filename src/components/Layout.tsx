@@ -34,16 +34,16 @@ import useSiteMetadata from "./SiteMetadata";
 import AmplifyTheme from "./Amplify/Theme";
 import MaterialTheme from "./MaterialUI/Theme";
 
-import ResponsiveDrawer from "./ResponsiveDrawer";
+import DrawerResponsive from "./DrawerResponsive";
 
 // import "../styles/all.scss";
 
 Amplify.configure(awsconfig);
 
-const TemplateWrapper = ({
+const Layout = ({
   children,
   pathname
-}: InferProps<typeof TemplateWrapper.propTypes>): ReactElement => {
+}: InferProps<typeof Layout.propTypes>): ReactElement => {
   const { title, description } = useSiteMetadata();
 
   return (
@@ -108,19 +108,19 @@ const TemplateWrapper = ({
 
         <CssBaseline />
 
-        <ResponsiveDrawer>{children}</ResponsiveDrawer>
+        <DrawerResponsive>{children}</DrawerResponsive>
       </Typography>
     </MaterialTheme>
   );
 };
 
-TemplateWrapper.propTypes = {
+Layout.propTypes = {
   children: PropTypes.node.isRequired,
   pathname: PropTypes.node.isRequired
 };
 
 export default withAuthenticator(
-  TemplateWrapper,
+  Layout,
   false, // set to true to show default AWS-supplied log out button
   [],
   null,
