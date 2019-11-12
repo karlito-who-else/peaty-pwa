@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const siteMetadata = require("./config/site-metadata");
 const iconsConfiguration = require("./config/icons");
 
@@ -28,9 +29,13 @@ const config = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: siteMetadata.title,
+        // eslint-disable-next-line @typescript-eslint/camelcase
         short_name: siteMetadata.shortTitle,
+        // eslint-disable-next-line @typescript-eslint/camelcase
         start_url: `/`,
+        // eslint-disable-next-line @typescript-eslint/camelcase
         background_color: `#ffffff`,
+        // eslint-disable-next-line @typescript-eslint/camelcase
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/img/logomark.svg`,
@@ -40,6 +45,14 @@ const config = {
     `gatsby-plugin-offline`,
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
+    {
+      resolve: "gatsby-plugin-material-ui",
+      options: {
+        stylesProvider: {
+          injectFirst: true
+        }
+      }
+    },
     "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-plugin-react-svg",

@@ -1,13 +1,12 @@
-import React, { ReactElement } from "react";
+import { graphql, Link } from "gatsby";
 import PropTypes from "prop-types";
-import { Link, graphql } from "gatsby";
+import React, { ReactElement } from "react";
 
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
+import { Container, Typography } from "@material-ui/core";
 
-import Layout from "../components/Layout";
-import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
+import Features from "../components/Features";
+import Layout from "../components/Layout";
 
 export const IndexPageTemplate = ({
   image,

@@ -54,7 +54,7 @@ export const Nav = {};
 export const NavItem = {};
 export const NavButton = {};
 
-const AmplifyTheme = {
+export const Theme = {
   container: Container,
   formContainer: FormContainer,
   formSection: FormSection,
@@ -97,4 +97,4 @@ const AmplifyTheme = {
   navButton: NavButton
 };
 
-export default AmplifyTheme;
+export default Theme;

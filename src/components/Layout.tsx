@@ -27,18 +27,14 @@ import {
 
 import CustomProperties from "react-custom-properties";
 
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Hidden from "@material-ui/core/Hidden";
-import Typography from "@material-ui/core/Typography";
+import { CssBaseline, Typography } from "@material-ui/core";
 
 import useSiteMetadata from "./SiteMetadata";
-// import iconsConfiguration from "../../config/icons";
 
 import AmplifyTheme from "./Amplify/Theme";
+import MaterialTheme from "./MaterialUI/Theme";
 
-import AppBar from "../components/AppBar";
-import BottomNavigation from "../components/BottomNavigation";
-import Footer from "../components/Footer";
+import ResponsiveDrawer from "./ResponsiveDrawer";
 
 // import "../styles/all.scss";
 
@@ -51,20 +47,21 @@ const TemplateWrapper = ({
   const { title, description } = useSiteMetadata();
 
   return (
-    <Typography component="div" style={{ backgroundColor: "#cfe8fc" }}>
-      <Helmet
-        bodyAttributes={{
-          class: "has-AppBar-fixed-top loading",
-          pathname
-        }}
-      >
-        <html lang="en" />
-        <title>{title}</title>
-        <meta name="description" content={description} />
+    <MaterialTheme>
+      <Typography component="div">
+        <Helmet
+          bodyAttributes={{
+            class: "has-AppBar-fixed-top loading",
+            pathname
+          }}
+        >
+          <html lang="en" />
+          <title>{title}</title>
+          <meta name="description" content={description} />
 
-        <link rel="icon" type="image/svg+xml" href="/img/logomark.svg" />
+          <link rel="icon" type="image/svg+xml" href="/img/logomark.svg" />
 
-        {/* {iconsConfiguration.map((icon, key) => (
+          {/* {iconsConfiguration.map((icon, key) => (
           <link
             key={key}
             rel="icon"
@@ -76,52 +73,44 @@ const TemplateWrapper = ({
           />
         ))} */}
 
-        <script
-          async
-          crossOrigin="anonymous"
-          integrity="sha384-I1iiXcTSM6j2xczpDckV+qhhbqiip6FyD6R5CpuqNaWXvyDUvXN5ZhIiyLQ7uuTh"
-          src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.10/pwacompat.min.js"
-        ></script>
+          <script
+            async
+            crossOrigin="anonymous"
+            integrity="sha384-I1iiXcTSM6j2xczpDckV+qhhbqiip6FyD6R5CpuqNaWXvyDUvXN5ZhIiyLQ7uuTh"
+            src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.10/pwacompat.min.js"
+          ></script>
 
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          />
+
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
+
+          <meta name="theme-color" content="#fff" />
+
+          <meta property="og:type" content="business.business" />
+          <meta property="og:title" content={title} />
+          <meta property="og:url" content="/" />
+          <meta
+            property="og:image"
+            content={`${withPrefix("/")}img/og-image.jpg`}
+          />
+        </Helmet>
+
+        <CustomProperties
+          global
+          properties={{ "--branding-color": "#FF0000" }}
         />
 
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        />
+        <CssBaseline />
 
-        <meta name="theme-color" content="#fff" />
-
-        <meta property="og:type" content="business.business" />
-        <meta property="og:title" content={title} />
-        <meta property="og:url" content="/" />
-        <meta
-          property="og:image"
-          content={`${withPrefix("/")}img/og-image.jpg`}
-        />
-      </Helmet>
-
-      <CustomProperties global properties={{ "--branding-color": "#FF0000" }} />
-
-      <CssBaseline />
-
-      <Hidden smDown>
-        <AppBar />
-      </Hidden>
-
-      {children}
-
-      <Hidden smDown>
-        <Footer />
-      </Hidden>
-
-      <Hidden mdUp>
-        <BottomNavigation />
-      </Hidden>
-    </Typography>
+        <ResponsiveDrawer>{children}</ResponsiveDrawer>
+      </Typography>
+    </MaterialTheme>
   );
 };
 
