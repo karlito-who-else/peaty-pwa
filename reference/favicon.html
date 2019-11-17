@@ -1,0 +1,45 @@
+<link
+rel="icon"
+href="/img/logo/logomark-dark.svg?v=1"
+media="(prefers-color-scheme:no-preference)"
+type="image/svg+xml"
+/>
+<link
+rel="icon"
+href="/img/logo/logomark-light.svg?v=1"
+media="(prefers-color-scheme:dark)"
+type="image/svg+xml"
+/>
+<link
+rel="icon"
+href="/img/logo/logomark-dark.svg?v=1"
+media="(prefers-color-scheme:light)"
+type="image/svg+xml"
+/>
+
+<script type="text/javascript">
+{`
+  function swap(icons, match) {
+    console.log("swap", icons, match);
+    // if (match.matches) {
+    //     icons.forEach(icon => {
+    //       icon.remove();
+    //     });
+
+    //     icons = document.head.appendChild(icon);
+    // }
+  }
+
+  if (window.matchMedia) {
+    const icons = document.querySelectorAll('head > link[rel="icon"][media]');
+
+    icons.forEach(icon => {
+      const match = window.matchMedia(icon.media);
+
+      match.addListener(() => {swap(icons, match)});
+
+      swap(icons, match);
+    });
+  }
+`}
+</script>
