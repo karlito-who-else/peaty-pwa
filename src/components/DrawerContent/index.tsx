@@ -1,8 +1,10 @@
+import clsx from "clsx";
 import PropTypes, { InferProps } from "prop-types";
 import React, { ReactElement } from "react";
 
 import {
   Divider,
+  Hidden,
   List,
   ListItem,
   ListItemIcon,
@@ -12,20 +14,49 @@ import {
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { Inbox as InboxIcon, Mail as MailIcon } from "@material-ui/icons";
 
+import useSiteMetadata from "../SiteMetadata";
+import Footer from "../Footer";
+import Logotype from "../../img/logo/logotype.inline.svg";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    logo: {
+      alignContent: "center",
+      display: "grid",
+      justifyContent: "center",
+      padding: theme.spacing(2)
+    },
     toolbar: theme.mixins.toolbar
+  })
+);
+
+const useStylesFooter = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      background: "transparent"
+    },
+    copyright: {
+      padding: theme.spacing(2)
+    }
   })
 );
 
 export const DrawerContent = ({
   children
 }: InferProps<typeof DrawerMain.propTypes>): ReactElement => {
+  const { title } = useSiteMetadata();
   const classes = useStyles();
+  const classesFooter = useStylesFooter();
 
   return (
     <React.Fragment>
-      <div className={classes.toolbar} />
+      <div className={clsx(classes.logo, classes.toolbar)}>
+        <Logotype
+          alt={title}
+          fill="#fff"
+          style={{ height: "auto", width: "100%" }}
+        />
+      </div>
       <Divider />
       <List>
         <ListItem button component="a" href="/" key="Home">
@@ -46,27 +77,23 @@ export const DrawerContent = ({
           </ListItemIcon>
           <ListItemText primary="Scheduler" />
         </ListItem>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button component="a" href="/settings" key="Settings">
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Settings" />
+        </ListItem>
       </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+
+      {children && <Divider />}
+
       {children}
+
+      <Divider />
+
+      <Hidden mdUp>
+        <Footer classesProvided={classesFooter} showDividers={true} />
+      </Hidden>
     </React.Fragment>
   );
 };

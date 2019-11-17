@@ -41,17 +41,6 @@ export const DrawerResponsive = ({
           {children}
         </Drawer>
       </Hidden>
-      <Hidden xsDown implementation="css">
-        <Drawer
-          classes={{
-            paper: classes.drawerPaper
-          }}
-          variant="permanent"
-          open
-        >
-          {children}
-        </Drawer>
-      </Hidden>
     </nav>
   );
 };

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 import PropTypes, { InferProps } from "prop-types";
 
-import { withPrefix } from "gatsby";
+// import { withPrefix } from "gatsby";
 
 import {
   AppBar,
-  CssBaseline,
+  Box,
+  Container,
+  // CssBaseline,
   // Drawer,
   Hidden,
   IconButton,
@@ -16,41 +18,20 @@ import {
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { Menu as MenuIcon } from "@material-ui/icons";
 
-// import Amplify, {
-// Analytics,
-// Storage,
-// API,
-// graphqlOperation
-// } from "aws-amplify";
-import Amplify from "aws-amplify";
+import Logotype from "../img/logo/logotype.inline.svg";
 
+import App from "./App";
 import BottomNavigationMobile from "./BottomNavigationMobile";
 import DrawerContent from "./DrawerContent";
 import Footer from "./Footer";
 import DrawerResponsive from "./DrawerResponsive";
 import useSiteMetadata from "./SiteMetadata";
 
-import awsconfig from "../aws-exports";
+// import CustomProperties from "react-custom-properties";
 
-import {
-  // ConfirmSignIn,
-  // ConfirmSignUp,
-  // ForgotPassword,
-  // RequireNewPassword,
-  // SignIn,
-  // SignUp,
-  // VerifyContact,
-  withAuthenticator
-} from "aws-amplify-react";
-
-import CustomProperties from "react-custom-properties";
-
-import AmplifyTheme from "./Amplify/Theme";
-import MaterialTheme from "./MaterialUI/Theme";
+// import MaterialTheme from "./MaterialUI/Theme";
 
 // import "../styles/all.scss";
-
-Amplify.configure(awsconfig);
 
 const drawerWidth = 240;
 
@@ -62,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: "grid",
       gridTemplateAreas: gridTemplateAreasSmall,
-      gridTemplateColumns: `1fr`,
+      // gridTemplateColumns: `1fr`,
       gridTemplateRows: "56px 1fr auto",
       // [`${theme.breakpoints.up("xs")} and (orientation: landscape)`]: {
       //   gridTemplateAreas: gridTemplateAreasLarge,
@@ -71,16 +52,16 @@ const useStyles = makeStyles((theme: Theme) =>
       // },
       [theme.breakpoints.up("sm")]: {
         gridTemplateAreas: gridTemplateAreasLarge,
-        gridTemplateColumns: `${drawerWidth}px 1fr`,
+        // gridTemplateColumns: `${drawerWidth}px 1fr`,
         gridTemplateRows: "64px 1fr auto"
       },
       minHeight: "100vh"
     },
     appBar: {
-      gridArea: "header",
-      [theme.breakpoints.up("sm")]: {
-        width: `calc(100% - ${drawerWidth}px)`
-      }
+      gridArea: "header"
+      // [theme.breakpoints.up("sm")]: {
+      //   width: `calc(100% - ${drawerWidth}px)`
+      // }
     },
     drawer: {
       gridArea: "navigation",
@@ -88,13 +69,46 @@ const useStyles = makeStyles((theme: Theme) =>
         width: drawerWidth
       }
     },
-    menuButton: {
-      marginRight: theme.spacing(2),
-      [theme.breakpoints.up("sm")]: {
-        display: "none"
+    footer: {
+      gridArea: "footer"
+    },
+    footerContainer: {
+      // backgroundColor: theme.palette.background.paper,
+      // backgroundColor: theme.palette.primary.main,
+      display: "grid",
+      gap: `${theme.spacing(2)}px`,
+      gridAutoRows: `minmax(100px, auto)`,
+      gridTemplateColumns: `repeat(2, 1fr)`,
+      [theme.breakpoints.up("lg")]: {
+        gridTemplateColumns: `repeat(3, 1fr)`
       }
+      // padding: theme.spacing(2)
+    },
+    menuButton: {
+      marginRight: theme.spacing(2)
+      // [theme.breakpoints.up("sm")]: {
+      //   display: "none"
+      // }
     },
     toolbar: theme.mixins.toolbar
+  })
+);
+
+const useStylesFooter = makeStyles((theme: Theme) =>
+  createStyles({
+    copyright: {
+      alignContent: "center",
+      display: "grid",
+      gap: `${theme.spacing(1)}px`,
+      gridAutoFlow: "column",
+      justifyContent: "center"
+    },
+    full: {
+      gridColumn: `auto / span 2`,
+      [theme.breakpoints.up("lg")]: {
+        gridColumn: `auto / span 3`
+      }
+    }
   })
 );
 
@@ -102,64 +116,18 @@ const Layout = ({
   children,
   pathname
 }: InferProps<typeof Layout.propTypes>): ReactElement => {
-  const { title, description } = useSiteMetadata();
+  const { title } = useSiteMetadata();
   const [mobileOpen, setMobileOpen] = useState(false);
   const classes = useStyles();
+  const classesFooter = useStylesFooter();
 
   const handleDrawerToggle = (): void => {
     setMobileOpen(!mobileOpen);
   };
 
   return (
-    <MaterialTheme>
+    <App pathname={pathname}>
       <Typography className={classes.root} component="div">
-        <Helmet
-          bodyAttributes={{
-            class: "has-AppBar-fixed-top loading",
-            pathname
-          }}
-        >
-          <html lang="en" />
-          <title>{title}</title>
-          <meta name="description" content={description} />
-
-          <link rel="icon" type="image/svg+xml" href="/img/logomark.svg" />
-
-          <script
-            async
-            crossOrigin="anonymous"
-            integrity="sha384-I1iiXcTSM6j2xczpDckV+qhhbqiip6FyD6R5CpuqNaWXvyDUvXN5ZhIiyLQ7uuTh"
-            src="https://cdn.jsdelivr.net/npm/pwacompat@2.0.10/pwacompat.min.js"
-          ></script>
-
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          />
-
-          <meta name="theme-color" content="#fff" />
-
-          <meta property="og:type" content="business.business" />
-          <meta property="og:title" content={title} />
-          <meta property="og:url" content="/" />
-          <meta
-            property="og:image"
-            content={`${withPrefix("/")}img/og-image.jpg`}
-          />
-        </Helmet>
-
-        <CustomProperties
-          global
-          properties={{ "--branding-color": "#FF0000" }}
-        />
-
-        <CssBaseline />
-
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
             <IconButton
@@ -171,9 +139,14 @@ const Layout = ({
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap>
+            {/* <Typography variant="h6" noWrap>
               {title}
-            </Typography>
+            </Typography> */}
+            <Logotype
+              alt={title}
+              fill="#fff"
+              style={{ height: "auto", width: "240px" }}
+            />
           </Toolbar>
         </AppBar>
 
@@ -188,14 +161,22 @@ const Layout = ({
         {children}
 
         <Hidden smDown>
-          <Footer />
+          <Box
+            bgcolor="background.paper"
+            className={classes.footer}
+            component="footer"
+          >
+            <Container className={classes.footerContainer} fixed>
+              <Footer classesProvided={classesFooter} showTitles={true} />
+            </Container>
+          </Box>
         </Hidden>
 
         <Hidden mdUp>
           <BottomNavigationMobile />
         </Hidden>
       </Typography>
-    </MaterialTheme>
+    </App>
   );
 };
 
@@ -204,10 +185,4 @@ Layout.propTypes = {
   pathname: PropTypes.node.isRequired
 };
 
-export default withAuthenticator(
-  Layout,
-  false, // set to true to show default AWS-supplied log out button
-  [],
-  null,
-  AmplifyTheme
-);
+export default Layout;
