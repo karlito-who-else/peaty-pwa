@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const siteMetadata = require("./config/site-metadata");
-const iconsConfiguration = require("./config/icons");
+// const iconsConfiguration = require("./config/icons");
 
-const icons = iconsConfiguration.map(icon => ({
-  sizes: `${icon.size}x${icon.size}`,
-  src: `/icons/icon-${icon.size}x${icon.size}.${icon.type}`,
-  type: `image/${icon.type}`
-}));
+// const icons = iconsConfiguration.map(icon => ({
+//   sizes: `${icon.size}x${icon.size}`,
+//   src: `/icons/icon-${icon.size}x${icon.size}.${icon.type}`,
+//   type: `image/${icon.type}`
+// }));
 
 const config = {
   siteMetadata,
@@ -28,6 +28,8 @@ const config = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        // include_favicon: false,
         name: siteMetadata.title,
         // eslint-disable-next-line @typescript-eslint/camelcase
         short_name: siteMetadata.shortTitle,
@@ -37,9 +39,11 @@ const config = {
         background_color: `#ffffff`,
         // eslint-disable-next-line @typescript-eslint/camelcase
         theme_color: `#663399`,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        theme_color_in_head: false,
         display: `minimal-ui`,
-        icon: `src/img/logomark.svg`,
-        icons
+        icon: `src/img/logo/logomark-medium.svg`
+        // icons
       }
     },
     `gatsby-plugin-offline`,
