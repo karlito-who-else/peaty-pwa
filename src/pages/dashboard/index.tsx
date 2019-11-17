@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up("xl")]: {
         gridTemplateColumns: `repeat(4, 1fr)`
       },
-      padding: theme.spacing(2)
+      paddingBottom: theme.spacing(2),
+      paddingTop: theme.spacing(2)
     },
     paper: {
       color: theme.palette.text.secondary,

@@ -35,14 +35,11 @@ import useSiteMetadata from "./SiteMetadata";
 
 const drawerWidth = 240;
 
-const gridTemplateAreasSmall = `"header" "content" "footer"`;
-const gridTemplateAreasLarge = `"header header" "navigation content" "navigation footer"`;
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: "grid",
-      gridTemplateAreas: gridTemplateAreasSmall,
+      gridTemplateAreas: `"header" "content" "footer"`,
       // gridTemplateColumns: `1fr`,
       gridTemplateRows: "56px 1fr auto",
       // [`${theme.breakpoints.up("xs")} and (orientation: landscape)`]: {
@@ -51,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
       //   gridTemplateRows: "48px 1fr auto"
       // },
       [theme.breakpoints.up("sm")]: {
-        gridTemplateAreas: gridTemplateAreasLarge,
+        // gridTemplateAreas: gridTemplateAreasLarge,
         // gridTemplateColumns: `${drawerWidth}px 1fr`,
         gridTemplateRows: "64px 1fr auto"
       },

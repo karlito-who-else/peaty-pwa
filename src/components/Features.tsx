@@ -1,31 +1,43 @@
 import React from "react";
 import PropTypes, { InferProps } from "prop-types";
 
+import { createStyles, makeStyles } from "@material-ui/core/styles";
+
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: "grid",
+      gap: `${theme.spacing(4)}px`,
+      gridTemplateColumns: `repeat(4, 1fr)`,
+      paddingBottom: theme.spacing(2),
+      paddingTop: theme.spacing(2)
+    },
+    paper: {
+      color: theme.palette.text.secondary,
+      padding: theme.spacing(2),
+      textAlign: "center"
+    }
+  })
+);
 
 const FeatureGrid = ({
   gridItems
-}: InferProps<typeof FeatureGrid.propTypes>): ReactElement => (
-  <div className="columns is-multiline">
-    {gridItems.map(item => (
-      <div key={item.text} className="column is-6">
-        <section className="section">
-          <div className="has-text-centered">
-            <div
-              style={{
-                width: "240px",
-                display: "inline-block"
-              }}
-            >
-              <PreviewCompatibleImage imageInfo={item} />
-            </div>
-          </div>
+}: InferProps<typeof FeatureGrid.propTypes>): ReactElement => {
+  const classes = useStyles();
+
+  return (
+    <section className={classes.root}>
+      {gridItems.map(item => (
+        <div key={item.text} className="item">
+          <PreviewCompatibleImage imageInfo={item} />
           <p>{item.text}</p>
-        </section>
-      </div>
-    ))}
-  </div>
-);
+        </div>
+      ))}
+    </section>
+  );
+};
 
 FeatureGrid.propTypes = {
   gridItems: PropTypes.arrayOf(

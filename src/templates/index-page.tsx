@@ -3,10 +3,28 @@ import PropTypes from "prop-types";
 import React, { ReactElement } from "react";
 
 import { Container, Typography } from "@material-ui/core";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
 
 import BlogRoll from "../components/BlogRoll";
 import Features from "../components/Features";
 import Layout from "../components/Layout";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: "grid",
+      gap: `${theme.spacing(2)}px`,
+      gridArea: "content",
+      paddingBottom: theme.spacing(2),
+      paddingTop: theme.spacing(2)
+    },
+    paper: {
+      color: theme.palette.text.secondary,
+      padding: theme.spacing(2),
+      textAlign: "center"
+    }
+  })
+);
 
 export const IndexPageTemplate = ({
   image,
@@ -16,107 +34,88 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro
-}): ReactElement => (
-  <Container component="main" fixed>
-    <div
-      className="full-width-image margin-top-0"
-      style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`
-      }}
-    >
-      <div
+}): ReactElement => {
+  const classes = useStyles();
+
+  return (
+    <Container className={classes.root} component="main" fixed>
+      <section
         style={{
-          display: "flex",
-          height: "150px",
-          lineHeight: "1",
-          justifyContent: "space-around",
-          alignItems: "left",
-          flexDirection: "column"
+          backgroundImage: `url(${
+            !!image.childImageSharp ? image.childImageSharp.fluid.src : image
+          })`,
+          backgroundPosition: `top left`,
+          backgroundAttachment: `fixed`
         }}
       >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
+        <div
           style={{
-            boxShadow:
-              "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
-            backgroundColor: "rgb(255, 68, 0)",
-            color: "white",
+            display: "flex",
+            height: "150px",
             lineHeight: "1",
-            padding: "0.25em"
+            justifyContent: "space-around",
+            alignItems: "left",
+            flexDirection: "column"
           }}
         >
-          {title}
-        </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
-            backgroundColor: "rgb(255, 68, 0)",
-            color: "white",
-            lineHeight: "1",
-            padding: "0.25em"
-          }}
-        >
-          {subheading}
-        </h3>
-      </div>
-    </div>
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="content">
-                  <div className="tile">
-                    <Typography variant="h1" component="h2">
-                      {mainpitch.title}
-                    </Typography>
-                  </div>
-                  <div className="tile">
-                    <h3 className="subtitle">{mainpitch.description}</h3>
-                  </div>
-                </div>
-                <div className="columns">
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      {heading}
-                    </h3>
-                    <p>{description}</p>
-                  </div>
-                </div>
-                <Features gridItems={intro.blurbs} />
-                <div className="columns">
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/products">
-                      See all products
-                    </Link>
-                  </div>
-                </div>
-                <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
-                  </h3>
-                  <BlogRoll />
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
-                      Read more
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <h1
+            className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
+            style={{
+              boxShadow:
+                "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
+              backgroundColor: "rgb(255, 68, 0)",
+              color: "white",
+              lineHeight: "1",
+              padding: "0.25em"
+            }}
+          >
+            {title}
+          </h1>
+          <h3
+            className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+            style={{
+              boxShadow:
+                "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
+              backgroundColor: "rgb(255, 68, 0)",
+              color: "white",
+              lineHeight: "1",
+              padding: "0.25em"
+            }}
+          >
+            {subheading}
+          </h3>
+        </div>
+      </section>
+      <section>
+        <Typography variant="h1" component="h2">
+          {mainpitch.title}
+        </Typography>
+        <h3 className="subtitle">{mainpitch.description}</h3>
+      </section>
+      <section>
+        <h3>{heading}</h3>
+        <p>{description}</p>
+      </section>
+      <Features gridItems={intro.blurbs} />
+      <footer>
+        <div>
+          <Link className="btn" to="/products">
+            See all products
+          </Link>
+        </div>
+        <div>
+          <h3>Latest stories</h3>
+          <BlogRoll />
+          <div>
+            <Link className="btn" to="/blog">
+              Read more
+            </Link>
           </div>
         </div>
-      </div>
-    </section>
-  </Container>
-);
+      </footer>
+    </Container>
+  );
+};
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
