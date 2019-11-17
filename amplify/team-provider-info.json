@@ -18,7 +18,7 @@
                     "RECAPTCHASECRET": ""
                 },
                 "peatypwa1e26d4b1CustomMessage": {
-                    "REDIRECTURL": "https://peaty.netlify.com/account/confirmation",
+                    "REDIRECTURL": "https://peaty-rota.netlify.com/account/confirmation",
                     "EMAILSUBJECT": "Please confirm your account with Peaty",
                     "EMAILMESSAGE": "Please confirm "
                 }
