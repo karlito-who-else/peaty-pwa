@@ -7,7 +7,7 @@
   "bugs": {
     "url": "https://github.com/karlito-who-else/peaty-pwa/issues"
   },
-  "description": "Example Gatsby, and Netlify CMS project",
+  "description": "Gatsby and Netlify CMS project for Peaty Rota",
   "dependencies": {
     "@devexpress/dx-react-core": "^2.2.1",
     "@devexpress/dx-react-scheduler": "^2.2.1",
