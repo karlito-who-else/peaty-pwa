@@ -14,7 +14,7 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 import Authenticator from "../../components/Authenticator";
 import Layout from "../../components/Layout";
 import withLocation from "../../components/withLocation";
-import { appointments } from "../scheduler/data";
+import { appointments } from "../../tmp/data";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

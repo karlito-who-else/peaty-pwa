@@ -12,7 +12,7 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 
 import Layout from "../../components/Layout";
 import withLocation from "../../components/withLocation";
-import { appointments } from "./data";
+import { appointments } from "../../tmp/data";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
