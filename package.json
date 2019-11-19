@@ -5,7 +5,7 @@
     "url": "https://www.primeordinal.com"
   },
   "bugs": {
-    "url": "https://github.com/karlito-who-else/peaty-pwa/issues"
+    "url": "https://github.com/karlito-who-else/peaty-rota/issues"
   },
   "description": "Gatsby and Netlify CMS project for Peaty Rota",
   "dependencies": {
@@ -105,7 +105,7 @@
       "enum-values-sorted-alphabetically"
     ]
   },
-  "homepage": "https://github.com/karlito-who-else/peaty-pwa#readme",
+  "homepage": "https://github.com/karlito-who-else/peaty-rota#readme",
   "husky": {
     "hooks": {
       "precommit": "lint-staged",
@@ -126,10 +126,10 @@
     ]
   },
   "main": "n/a",
-  "name": "peaty-pwa",
+  "name": "peaty-rota",
   "repository": {
     "type": "git",
-    "url": "https://github.com/karlito-who-else/peaty-pwa.git"
+    "url": "https://github.com/karlito-who-else/peaty-rota.git"
   },
   "scripts": {
     "build": "npm run clean && gatsby build",
