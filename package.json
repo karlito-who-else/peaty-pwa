@@ -18,7 +18,7 @@
     "aws-amplify-react": "2.5.4",
     "babel-plugin-styled-components": "1.10.6",
     "bulma": "0.8.0",
-    "clsx": "1.0.4",
+    "clsx": "1.1.0",
     "dayjs": "1.8.17",
     "formik": "2.0.4",
     "formik-material-ui": "1.0.0",
